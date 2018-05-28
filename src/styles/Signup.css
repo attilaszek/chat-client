@@ -1,0 +1,14 @@
+#loginForm {
+  width: 300px;
+  padding: 12px;
+}
+
+.centered {
+  display: flex;
+  justify-content: center;
+}
+
+.errorLabel {
+  color: red;
+  text-indent: 20px;
+}
