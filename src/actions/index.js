@@ -20,7 +20,7 @@ export const removeOnlineUser = (user) => ({
   payload: user
 })
 
-export const setActiveUser = (email) => ({
+export const setActiveUser = (user) => ({
   type: types.SET_ACTIVE_USER,
-  payload: email
+  payload: user
 })

@@ -30,8 +30,8 @@ class Users extends Component {
     }
   }
 
-  handleClick = (email) => {
-    this.props.setActiveUser(email)
+  handleClick = (user) => {
+    this.props.setActiveUser(user)
   }
 
   render() {

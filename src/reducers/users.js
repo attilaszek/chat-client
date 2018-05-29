@@ -28,7 +28,7 @@ const users = (state = initialState, action) => {
       if (index > -1) {
         newUsers.splice(index, 1)
       }
-      var new_active_user = (state.active_user === action.payload.email) ? null : state.active_user
+      var new_active_user = (state.active_user && state.active_user.id === action.payload.id) ? null : state.active_user
       //var new_active_user = state.active_user
       return {
         users_list: newUsers,
