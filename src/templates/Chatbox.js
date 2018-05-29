@@ -1,9 +1,18 @@
 import React from 'react'
 import '../styles/Chatbox.css'
+import { ActionCable } from 'react-actioncable-provider';
 
 export default function() {
   return(
     <div className="panel panel-default" id="chatbox-container">
+      {this.props.active_user && <ActionCable
+        channel={{  channel: "ConversationChannel", 
+                    sender_id: this.props.current_user.id,
+                    receiver_id: this.props.active_user.id
+                }}
+        onReceived={this.handleReceivedMessage}
+      />}
+
       <div className="panel-heading">
         {"MessageBox: " + (this.props.active_user ? this.props.active_user.first_name + " " + this.props.active_user.last_name : "")}
       </div>
@@ -38,7 +47,7 @@ export default function() {
                 <td className="message-td">
                   {message.sender_id == this.props.current_user.id ? 
                     (
-                      this.props.current_user.first_name + " " + this.props.current_user.last_name + ": "
+                      "Me: "
                     ) : 
                     (
                       this.props.active_user.first_name + " " + this.props.active_user.last_name + ": "

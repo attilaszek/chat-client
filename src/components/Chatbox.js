@@ -54,8 +54,6 @@ class Chatbox extends Component {
   }
 
   handleClick = () => {
-    alert(this.state.message)
-
     if (!this.props.active_user) return
 
     const self = this
@@ -78,6 +76,14 @@ class Chatbox extends Component {
 
   handleMoreMessages = () => {
     this.getMessages(this.props.active_user, this.state.page_nr)
+  }
+
+  handleReceivedMessage = (response) => {
+    if (response.sender_id == this.props.current_user.id || response.sender_id == this.props.active_user.id) {
+      this.setState({
+        messages: [response.message].concat(this.state.messages)
+      })
+    }
   }
 
   render() {
