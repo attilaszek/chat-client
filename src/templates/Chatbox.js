@@ -35,6 +35,11 @@ export default function() {
           value="Send"
           onClick={this.handleClick}
         />
+        <label>
+          <div className="btn btn-default">Send file</div>
+          <input type="file" style={{display: "none"}} name="fileName" onChange={this.handleFileChange}></input>
+        </label>
+        <p>{this.state.file_name && ("Attached file: " + this.state.file_name)}</p>
       </div>
 
       <div className="pre-scrollable">
@@ -58,6 +63,11 @@ export default function() {
                   {message.text}
                 </td>
               </tr></tbody></table>
+              {message.file_b64 && 
+                <p>
+                  <a download={message.file_name} href={message.file_b64}>{"Download " + message.file_name}</a>
+                </p>                
+              }  
             </li>
           )}
         </ul>

@@ -5,11 +5,11 @@
 }
 
 #my-submit-button {
-  
+  float: left;
 }
 
 #my-text-field {
-  width: 438px;
+  width: 358px;
   float: left;
 }
 

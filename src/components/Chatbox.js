@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 class Chatbox extends Component {
   state = {
     message: "",
+    file: "",
+    file_name: "",
     messages: [],
     page_nr: 1
   }
@@ -60,12 +62,16 @@ class Chatbox extends Component {
 
     myAxios.post('messages/create.json', {
       text: this.state.message,
+      file_b64: this.state.file,
+      file_name: this.state.file_name,
       sender_id: this.props.current_user.id,
       receiver_id: this.props.active_user.id
     })
     .then(function (response) {
       self.setState({
-        message: ""
+        message: "",
+        file: "",
+        file_name: ""
       })
       console.log(response);
     })
@@ -84,6 +90,23 @@ class Chatbox extends Component {
         messages: [response.message].concat(this.state.messages)
       })
     }
+  }
+
+  handleFileChange = (event) => {
+    var self = this;
+    var file_name = event.target.files[0].name
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.onload = function () {
+      console.log(reader.result);
+      self.setState({
+        file: reader.result,
+        file_name: file_name
+      });
+    };
+    reader.onerror = function (error) {
+      console.log('Error: ', error);
+    };
   }
 
   render() {
