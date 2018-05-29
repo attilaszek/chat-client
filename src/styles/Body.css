@@ -3,3 +3,9 @@
   display: flex;
   justify-content: center;
 }
+
+.my-container {
+  margin: 0 auto;
+  padding-top: 60px;
+  width: 700px;
+}

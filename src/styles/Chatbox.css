@@ -1,0 +1,14 @@
+#chatbox-container {
+  float: left;
+  width: 500px;
+  height: 400px;
+}
+
+#my-submit-button {
+  float: left;
+}
+
+#my-text-field {
+  width: 438px;
+  float: left;
+}

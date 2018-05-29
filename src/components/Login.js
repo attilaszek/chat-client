@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import myAxios from '../MyAxios.js'
 import loginTemplate from '../templates/Login.js'
 
-import { setCurrentUser } from '../actions/index.js'
+import { setCurrentUser, setActiveUser } from '../actions/index.js'
 import { connect } from 'react-redux';
 
 class Login extends Component {
@@ -20,6 +20,7 @@ class Login extends Component {
     myAxios.get('users/getuser.json')
     .then(response => {
       self.props.setCurrentUser(response.data)
+      self.props.setActiveUser(null)
     })
   }
 
@@ -63,6 +64,9 @@ class Login extends Component {
           email_error: errors.email,
           password_error: errors.password,
         });
+        if (errors.account) {
+          alert(errors.account)
+        }
       }
       console.log(error);
     });
@@ -77,4 +81,5 @@ const mapStateToProps = state => ({ });
 
 export default connect(mapStateToProps, {
   setCurrentUser,
+  setActiveUser
 })(Login);
