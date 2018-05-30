@@ -85,7 +85,8 @@ class Chatbox extends Component {
   }
 
   handleReceivedMessage = (response) => {
-    if (response.sender_id == this.props.current_user.id || response.sender_id == this.props.active_user.id) {
+    console.log(response.sender_id)
+    if (response.sender_id === this.props.current_user.id || response.sender_id === this.props.active_user.id) {
       this.setState({
         messages: [response.message].concat(this.state.messages)
       })
